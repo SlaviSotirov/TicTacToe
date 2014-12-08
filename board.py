@@ -110,7 +110,9 @@ class Board:
         return int(row), int(col)
 
     def bot_move(self):
-        pass
+        best_turn = self.minimax(self, 0, None, True)
+        (col, row) = self.get_available_moves(self.board)[best_turn]
+        self.place_O(col, row)
 
 ### magic below
     def minimax(self, board, depth, move=None, main_minimax=False):
@@ -144,7 +146,7 @@ class Board:
         else:
             return 0
 
-    def get_winner(self):
+    def print_winner(self):
         if self.is_over() is self.PLAYER_WINS:
             return "Congratz!! You are the winner!!!"
         elif self.is_over() is self.BOT_WINS:
@@ -159,16 +161,14 @@ def main():
     print(asd)
     while not asd.is_over():
         if asd.bot_turn:
-            best_turn = asd.minimax(asd, 0, None, True)
-            (col, row) = asd.get_available_moves(asd.board)[best_turn]
-            asd.place_O(col, row)
+            asd.bot_move()
         else:
             (col, row) = pro.make_move()
-            while asd.is_free(col,row):
+            while not asd.is_free(col, row):
                 (col, row) = pro.make_move()
             asd.place_X(col, row)
         print(asd)
-    print(asd.get_winner())
+    print(asd.print_winner())
 
 if __name__ == '__main__':
     main()
