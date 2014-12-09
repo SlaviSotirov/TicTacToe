@@ -135,6 +135,7 @@ class Game:
             return self.DRAW_GAME_MSG
 
     def execute(self):
+        print(self.board)
         while not self.is_over(self.board.matrix):
             if self.board.bot_turn:
                 self.bot_move()
