@@ -4,7 +4,7 @@ class Player:
         pass
 
     def make_move(self):
-        col = input("Insert row: ")
-        row = input("Insert colomn ")
+        row = input("Insert row: ")
+        col = input("Insert colomn ")
         return int(row), int(col)
 
