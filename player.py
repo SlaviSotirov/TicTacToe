@@ -7,4 +7,3 @@ class Player:
         row = input("Insert row: ")
         col = input("Insert colomn ")
         return int(row), int(col)
-

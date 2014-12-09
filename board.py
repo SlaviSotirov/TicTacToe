@@ -36,22 +36,3 @@ class Board:
 
     def change_turn(self):
         self.bot_turn, self.player_turn = self.player_turn, self.bot_turn
-
-
-def main():
-    asd = Board()
-    pro = Player()
-    print(asd)
-    while not asd.is_over():
-        if asd.bot_turn:
-            asd.bot_move()
-        else:
-            (col, row) = pro.make_move()
-            while not asd.is_free(col, row):
-                (col, row) = pro.make_move()
-            asd.place_X(col, row)
-        print(asd)
-    print(asd.print_winner())
-
-if __name__ == '__main__':
-    main()
